@@ -1,0 +1,293 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>For Shrushti</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@1,9..144,400;1,9..144,600&family=Caveat:wght@500;600&family=DM+Sans:wght@400;500&display=swap">
+<style>
+/* Layout: one full-screen stage that swaps between three scenes: big heart intro, field of floating hearts, closing letter. */
+:root {
+  --bg: #fff1f3;
+  --bg2: #ffd9e0;
+  --ink: #4a1626;
+  --soft: #8a4a5c;
+  --rose: #e11d48;
+  --rose2: #f43f6e;
+  --rose3: #fb7185;
+  --rose4: #be123c;
+  --paper: #fffaf6;
+  --paper-ink: #5a2433;
+  --shadow: rgba(190, 18, 60, .28);
+  --display: "Fraunces", Georgia, serif;
+  --hand: "Caveat", "Segoe Script", cursive;
+  --body: "DM Sans", system-ui, sans-serif;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #230b16; --bg2: #3a1223; --ink: #ffe4ea; --soft: #e5a3b4;
+    --rose: #f43f6e; --rose2: #fb5c84; --rose3: #ff8aa5; --rose4: #e11d48;
+    --paper: #fff3ee; --paper-ink: #5a2433; --shadow: rgba(0,0,0,.5);
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #230b16; --bg2: #3a1223; --ink: #ffe4ea; --soft: #e5a3b4;
+  --rose: #f43f6e; --rose2: #fb5c84; --rose3: #ff8aa5; --rose4: #e11d48;
+  --paper: #fff3ee; --paper-ink: #5a2433; --shadow: rgba(0,0,0,.5);
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+html, body { min-height: 100%; }
+body {
+  margin: 0;
+  background: radial-gradient(120% 90% at 50% 0%, var(--bg2), var(--bg) 60%);
+  background-color: var(--bg);
+  color: var(--ink);
+  font-family: var(--body);
+  padding-block: 20px;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  overflow-x: hidden;
+}
+.drift { position: fixed; inset: 0; pointer-events: none; overflow: hidden; z-index: 0; }
+.drift svg { position: absolute; bottom: -40px; fill: var(--rose3); opacity: .35; animation: rise linear infinite; }
+@keyframes rise { to { transform: translateY(-115vh) rotate(25deg); opacity: 0; } }
+
+.scene { position: relative; z-index: 1; min-height: calc(100vh - 40px); display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; gap: 20px; min-width: 0; }
+.scene[hidden] { display: none !important; }
+
+h1, h2 { font-family: var(--display); font-style: italic; font-weight: 400; margin: 0; text-wrap: balance; line-height: 1.1; }
+
+/* intro */
+.big-heart { width: min(72vw, 340px); border: 0; background: none; padding: 0; cursor: pointer; filter: drop-shadow(0 18px 28px var(--shadow)); animation: beat 1.4s ease-in-out infinite; }
+.big-heart svg { width: 100%; display: block; fill: var(--rose); }
+.big-heart:focus-visible, .heart:focus-visible, .btn:focus-visible, .close:focus-visible { outline: 3px solid var(--ink); outline-offset: 4px; border-radius: 12px; }
+@keyframes beat { 0%,100% { transform: scale(1); } 15% { transform: scale(1.07); } 30% { transform: scale(1); } 45% { transform: scale(1.05); } }
+.hint { color: var(--soft); font-size: .95rem; letter-spacing: .12em; text-transform: uppercase; }
+.big-heart.pop { animation: pop .9s ease-in forwards; pointer-events: none; }
+@keyframes pop { 0% { transform: scale(1); opacity: 1; } 40% { transform: scale(1.25); opacity: 1; } 100% { transform: scale(2.6); opacity: 0; } }
+
+.name-reveal { display: none; flex-direction: column; align-items: center; gap: 14px; }
+.name-reveal.on { display: flex; }
+.name-reveal .for { font-family: var(--hand); font-size: clamp(1.6rem, 6vw, 2.2rem); color: var(--soft); opacity: 0; animation: fade 1s .2s forwards; }
+.name-reveal h1 { font-size: clamp(3.4rem, 16vw, 7.5rem); color: var(--rose); opacity: 0; animation: bloom 1.6s .6s cubic-bezier(.2,.8,.2,1) forwards; }
+.name-reveal p { max-width: 30ch; color: var(--soft); font-size: 1.05rem; line-height: 1.6; margin: 0; opacity: 0; animation: fade 1s 1.9s forwards; }
+.name-reveal .btn { opacity: 0; animation: fade 1s 2.6s forwards; }
+@keyframes fade { to { opacity: 1; } }
+@keyframes bloom { from { opacity: 0; transform: scale(.7); letter-spacing: .2em; } to { opacity: 1; transform: scale(1); letter-spacing: 0; } }
+
+.btn { font: 500 1rem var(--body); background: var(--rose); color: #fff; border: 0; border-radius: 999px; padding: 14px 30px; cursor: pointer; box-shadow: 0 10px 24px var(--shadow); transition: transform .2s; }
+.btn:hover { transform: translateY(-2px); }
+.btn.ghost { background: transparent; color: var(--rose); box-shadow: inset 0 0 0 2px var(--rose); }
+:root[data-theme="dark"] .btn { color: #2a0d18; }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .btn { color: #2a0d18; } }
+:root[data-theme="dark"] .btn.ghost { color: var(--rose3); box-shadow: inset 0 0 0 2px var(--rose3); }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .btn.ghost { color: var(--rose3); box-shadow: inset 0 0 0 2px var(--rose3); background: transparent; } }
+
+/* hearts field */
+.field-head h2 { font-size: clamp(1.8rem, 7vw, 3rem); color: var(--rose); }
+.field-head p { margin: 8px 0 0; color: var(--soft); }
+.field { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 6px 14px; max-width: 760px; padding: 10px 0; }
+.heart { width: clamp(84px, 22vw, 128px); aspect-ratio: 1; border: 0; background: none; padding: 0; cursor: pointer; position: relative; animation: bob 4s ease-in-out infinite; animation-delay: var(--d); transform: rotate(var(--r)); filter: drop-shadow(0 10px 14px var(--shadow)); transition: filter .3s; }
+.heart:nth-child(3n) { margin-top: 26px; }
+.heart:nth-child(3n+1) { margin-bottom: 20px; }
+.heart svg { width: 100%; height: 100%; display: block; fill: var(--c); transition: fill .4s, stroke-width .3s; stroke: var(--c); stroke-width: 0; }
+.heart:hover { animation-play-state: paused; }
+.heart:hover svg { transform: scale(1.12); }
+.heart svg { transition: transform .25s, fill .4s; }
+.heart.read svg { fill: transparent; stroke-width: 1.6; }
+.heart.read { filter: none; opacity: .85; }
+.heart .tick { position: absolute; inset: 0; display: grid; place-items: center; color: var(--c); font: 600 1.4rem var(--hand); opacity: 0; transition: opacity .3s; }
+.heart.read .tick { opacity: 1; }
+@keyframes bob { 0%,100% { translate: 0 0; } 50% { translate: 0 -10px; } }
+.counter { font-family: var(--hand); font-size: 1.6rem; color: var(--soft); }
+.bar { width: min(260px, 70vw); height: 6px; border-radius: 99px; background: var(--bg2); overflow: hidden; margin: 0 auto; box-shadow: inset 0 0 0 1px var(--rose3); }
+.bar i { display: block; height: 100%; width: 0; background: var(--rose); transition: width .5s; }
+
+/* note card */
+.veil { position: fixed; inset: 0; z-index: 20; display: grid; place-items: center; padding: max(16px, env(safe-area-inset-top, 0px)) max(16px, env(safe-area-inset-right, 0px)) max(16px, env(safe-area-inset-bottom, 0px)) max(16px, env(safe-area-inset-left, 0px)); background: rgba(60, 8, 26, .55); backdrop-filter: blur(4px); opacity: 0; pointer-events: none; transition: opacity .3s; }
+.veil.open { opacity: 1; pointer-events: auto; }
+.note { position: relative; width: min(100%, 420px); max-height: 86vh; overflow: auto; background: var(--paper); color: var(--paper-ink); border-radius: 6px 6px 22px 6px; padding: 38px 30px 30px; text-align: left; box-shadow: 0 30px 60px rgba(0,0,0,.4); transform: translateY(20px) rotate(-1.5deg) scale(.96); transition: transform .35s cubic-bezier(.2,.9,.3,1.2); }
+.veil.open .note { transform: none; }
+.note::before { content: ""; position: absolute; top: -12px; left: 50%; width: 90px; height: 24px; translate: -50% 0; background: var(--c, var(--rose)); opacity: .75; transform: rotate(-3deg); border-radius: 3px; }
+.note small { font: 500 .75rem var(--body); letter-spacing: .16em; text-transform: uppercase; color: #a3566a; }
+.note h3 { font-family: var(--display); font-style: italic; font-weight: 600; font-size: 1.7rem; margin: 6px 0 14px; color: var(--rose4); text-wrap: balance; }
+.note p { font-family: var(--hand); font-size: 1.55rem; line-height: 1.45; margin: 0; }
+.close { position: absolute; top: 8px; right: 10px; width: 40px; height: 40px; border: 0; background: none; color: #a3566a; font-size: 1.6rem; cursor: pointer; border-radius: 50%; }
+
+/* letter */
+.letter { width: min(100%, 520px); background: var(--paper); color: var(--paper-ink); border-radius: 6px 6px 26px 6px; padding: 40px 30px 34px; text-align: left; box-shadow: 0 30px 60px var(--shadow); }
+.letter .to { font-family: var(--display); font-style: italic; font-size: 1.9rem; color: var(--rose4); margin: 0 0 18px; }
+.letter p { font-family: var(--hand); font-size: clamp(1.45rem, 5vw, 1.75rem); line-height: 1.45; margin: 0 0 14px; opacity: 0; transform: translateY(8px); animation: line 1s forwards; animation-delay: calc(var(--i) * 1.4s + .4s); }
+.letter .sign { margin-top: 22px; font-family: var(--display); font-style: italic; font-size: 2rem; color: var(--rose4); opacity: 0; animation: line 1.2s forwards; animation-delay: var(--sd); }
+.letter .sign span { display: block; font-family: var(--body); font-style: normal; font-size: .8rem; letter-spacing: .16em; text-transform: uppercase; color: #a3566a; margin-bottom: 4px; }
+@keyframes line { to { opacity: 1; transform: none; } }
+.again { opacity: 0; animation: fade 1s forwards; animation-delay: var(--ad); }
+
+@media (prefers-reduced-motion: reduce) {
+  .heart, .big-heart, .drift svg { animation: none; }
+  .letter p, .letter .sign, .again, .name-reveal * { animation-duration: .01s !important; animation-delay: 0s !important; }
+}
+</style>
+
+<div class="drift" id="drift" aria-hidden="true"></div>
+
+<!-- Scene 1: big heart -->
+<main class="scene" id="intro">
+  <button class="big-heart" id="bigHeart" aria-label="Tap the heart">
+    <svg viewBox="0 0 32 29.6" aria-hidden="true"><path d="M23.6,0c-3.4,0-6.3,2.7-7.6,5.6C14.7,2.7,11.8,0,8.4,0C3.8,0,0,3.8,0,8.4c0,9.4,9.5,11.9,16,21.2c6.1-9.3,16-12.1,16-21.2C32,3.8,28.2,0,23.6,0z"/></svg>
+  </button>
+  <div class="hint" id="hint">Tap the heart</div>
+  <div class="name-reveal" id="nameReveal">
+    <div class="for">this is for</div>
+    <h1>Shrushti</h1>
+    <p>I hid a few things I have always wanted to tell you inside some hearts.</p>
+    <button class="btn" id="startBtn">Open the hearts</button>
+  </div>
+</main>
+
+<!-- Scene 2: hearts field -->
+<main class="scene" id="fieldScene" hidden>
+  <div class="field-head">
+    <h2>Tap each heart, Shrushti</h2>
+    <p>Every one has a note inside.</p>
+  </div>
+  <div class="field" id="field"></div>
+  <div class="counter" id="counter">0 of 8 opened</div>
+  <div class="bar"><i id="barFill"></i></div>
+</main>
+
+<!-- Scene 3: letter -->
+<main class="scene" id="finale" hidden>
+  <div class="letter" id="letter"></div>
+  <button class="btn ghost again" id="againBtn">Read the hearts again</button>
+</main>
+
+<div class="veil" id="veil" role="dialog" aria-modal="true" aria-labelledby="noteTitle">
+  <div class="note" id="noteCard">
+    <button class="close" id="closeBtn" aria-label="Close note">&times;</button>
+    <small id="noteTag"></small>
+    <h3 id="noteTitle"></h3>
+    <p id="noteText"></p>
+  </div>
+</div>
+
+<script>
+/* ====== EDIT HERE: the notes behind each heart, and the final letter ====== */
+const NOTES = [
+  { title: "Your smile",        text: "Some days your smile is the best thing that happens to me, and I did not even have to do anything for it." },
+  { title: "Your laugh",        text: "I would tell a hundred bad jokes just to hear it once. It makes everything around you feel lighter." },
+  { title: "My safe place",     text: "With you I do not have to try. I can just be myself, and you still choose me. That means more than I can say." },
+  { title: "Small moments",     text: "It is the little things I love most: the random texts, the long talks, the quiet minutes next to you." },
+  { title: "Thank you",         text: "Thank you for listening, for staying, and for believing in me on the days I forget to." },
+  { title: "You make me better", text: "I want to be kinder, braver and more patient because of you. You do that to me without even knowing it." },
+  { title: "My favourite person", text: "Out of everyone, every time, it is you I want to tell first when something happens." },
+  { title: "My promise",        text: "I will keep showing up, keep making you laugh, and keep choosing you. Today, tomorrow and all the days after." }
+];
+const LETTER = [
+  "Shrushti, if you are reading this, you opened every heart.",
+  "I am not great at saying big things out loud, so I built this for you instead.",
+  "Every word in those hearts is true, and there is a lot more where they came from.",
+  "Thank you for being you. I love you, today and always."
+];
+const SIGNED_BY = "Prathamesh";
+/* ========================================================================== */
+
+const HEART = '<svg viewBox="-1 -1 34 31.6" aria-hidden="true"><path d="M23.6,0c-3.4,0-6.3,2.7-7.6,5.6C14.7,2.7,11.8,0,8.4,0C3.8,0,0,3.8,0,8.4c0,9.4,9.5,11.9,16,21.2c6.1-9.3,16-12.1,16-21.2C32,3.8,28.2,0,23.6,0z"/></svg>';
+const $ = id => document.getElementById(id);
+const tones = ["var(--rose)", "var(--rose2)", "var(--rose3)", "var(--rose4)"];
+const opened = new Set();
+let lastFocus = null;
+
+// drifting background hearts
+(function drift() {
+  const box = $("drift");
+  for (let i = 0; i < 14; i++) {
+    const s = document.createElement("span");
+    s.innerHTML = HEART;
+    const svg = s.firstChild;
+    const size = 12 + Math.random() * 26;
+    svg.style.cssText = `left:${Math.random() * 100}%;width:${size}px;height:${size}px;animation-duration:${14 + Math.random() * 14}s;animation-delay:${-Math.random() * 20}s`;
+    box.appendChild(svg);
+  }
+})();
+
+// scene 1
+$("bigHeart").addEventListener("click", () => {
+  $("bigHeart").classList.add("pop");
+  $("hint").style.display = "none";
+  setTimeout(() => {
+    $("bigHeart").style.display = "none";
+    $("nameReveal").classList.add("on");
+  }, 700);
+});
+$("startBtn").addEventListener("click", () => showScene("fieldScene"));
+
+function showScene(id) {
+  ["intro", "fieldScene", "finale"].forEach(s => $(s).hidden = s !== id);
+  window.scrollTo(0, 0);
+}
+
+// scene 2
+function buildField() {
+  const field = $("field");
+  field.innerHTML = "";
+  NOTES.forEach((n, i) => {
+    const b = document.createElement("button");
+    b.className = "heart";
+    b.setAttribute("aria-label", "Open note: " + n.title);
+    b.style.setProperty("--c", tones[i % tones.length]);
+    b.style.setProperty("--d", (-i * 0.55) + "s");
+    b.style.setProperty("--r", ((i % 2 ? 1 : -1) * (3 + (i * 3) % 8)) + "deg");
+    b.innerHTML = HEART + '<span class="tick" aria-hidden="true">read</span>';
+    if (opened.has(i)) b.classList.add("read");
+    b.addEventListener("click", () => openNote(i, b));
+    field.appendChild(b);
+  });
+  updateProgress();
+}
+function updateProgress() {
+  $("counter").textContent = opened.size + " of " + NOTES.length + " opened";
+  $("barFill").style.width = (opened.size / NOTES.length * 100) + "%";
+}
+function openNote(i, btn) {
+  lastFocus = btn;
+  const n = NOTES[i];
+  $("noteTag").textContent = "Note " + (i + 1) + " of " + NOTES.length;
+  $("noteTitle").textContent = n.title;
+  $("noteText").textContent = n.text;
+  $("noteCard").style.setProperty("--c", tones[i % tones.length]);
+  opened.add(i);
+  btn.classList.add("read");
+  updateProgress();
+  $("veil").classList.add("open");
+  $("closeBtn").focus();
+}
+function closeNote() {
+  $("veil").classList.remove("open");
+  if (lastFocus) lastFocus.focus();
+  if (opened.size === NOTES.length && !$("fieldScene").hidden) {
+    setTimeout(showFinale, 700);
+  }
+}
+$("closeBtn").addEventListener("click", closeNote);
+$("veil").addEventListener("click", e => { if (e.target === $("veil")) closeNote(); });
+document.addEventListener("keydown", e => { if (e.key === "Escape" && $("veil").classList.contains("open")) closeNote(); });
+
+// scene 3
+function showFinale() {
+  const l = $("letter");
+  const total = LETTER.length;
+  l.innerHTML = '<p class="to" style="opacity:1;transform:none;animation:none">My dearest Shrushti,</p>' +
+    LETTER.map((t, i) => `<p style="--i:${i}"></p>`).join("") +
+    `<div class="sign" style="--sd:${total * 1.4 + .6}s"><span>With all my love</span>${""}</div>`;
+  l.querySelectorAll("p:not(.to)").forEach((p, i) => p.textContent = LETTER[i]);
+  l.querySelector(".sign").appendChild(document.createTextNode(SIGNED_BY));
+  $("againBtn").style.setProperty("--ad", (total * 1.4 + 2.4) + "s");
+  showScene("finale");
+}
+$("againBtn").addEventListener("click", () => { opened.clear(); buildField(); showScene("fieldScene"); });
+
+buildField();
+</script>
+
+</body></html>
